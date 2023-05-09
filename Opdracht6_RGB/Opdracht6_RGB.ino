@@ -26,7 +26,7 @@ void do_frame(uint32_t * const mask) {
   uint8_t red   = (*mask & 0x00FF0000) >> 16;
   uint8_t green = (*mask & 0x0000FF00) >> 8;
   uint8_t blue  = (*mask & 0x000000FF) >> 0;
-
+ mask hardware interrupts
   // set de pwm waarden
   analogWrite(PIN_R, red);
   analogWrite(PIN_G, green);
