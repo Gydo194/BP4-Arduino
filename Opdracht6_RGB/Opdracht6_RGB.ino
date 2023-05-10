@@ -2,7 +2,7 @@
 #define PIN_G 10
 #define PIN_B 9
 
-#define FRAME_TIME_MS 50
+#define FRAME_TIME_MS 0
 
 void setup()
 {
@@ -26,20 +26,22 @@ void do_frame(uint32_t * const mask) {
   uint8_t red   = (*mask & 0x00FF0000) >> 16;
   uint8_t green = (*mask & 0x0000FF00) >> 8;
   uint8_t blue  = (*mask & 0x000000FF) >> 0;
- mask hardware interrupts
+
   // set de pwm waarden
   analogWrite(PIN_R, red);
   analogWrite(PIN_G, green);
   analogWrite(PIN_B, blue);
 
+  /*
   Serial.print(red, BIN);
   Serial.print(" ");
   Serial.print(green, BIN);
   Serial.print(" ");
   Serial.println(blue, BIN);
+  */
   
   // increment de teller
-  (*mask)++;
+  *mask = (*mask) + 5;
   
   // reset naar 0 wanneer de range doorlopen is.
   // ivm we maar 24 bits nodig hebben voor RGB kan ik geen misbruik maken van de integer overflow
